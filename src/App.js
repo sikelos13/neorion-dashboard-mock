@@ -34,7 +34,13 @@ class App extends Component {
         this.state={isActive: false, username: "nonUser", dropdownOpen: false};
         this.handleSideBarToggle = this.handleSideBarToggle.bind(this);
         this.toggle = this.toggle.bind(this);
+        this.logout = this.logout.bind(this)
         // this.handlesLogOut = this.handlesLogOut.bind(this);
+    }
+
+    logout() {
+        localStorage.clear();
+        window.location.href = '/login';
     }
 
     toggle() {
@@ -76,7 +82,7 @@ class App extends Component {
                 {this.props.usernameAsProps}
             </DropdownToggle>
               <DropdownMenu>
-                  <DropdownItem >Log Out</DropdownItem>
+                  <DropdownItem onClick={this.logout} className="logout-item">Log Out</DropdownItem>
               </DropdownMenu>
               </Dropdown>
           </nav>
