@@ -1,0 +1,30 @@
+version: '3.4'
+
+networks:
+  intelligems-central:
+    external:
+      name: intelligems-central
+
+services:
+  web:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+      target: dev
+      # args:
+      #   API_HOST: https://neorion.koslib.dev.intelligems.eu
+      #   API_NAMESPACE: api/v1
+    command: webpack-dev-server --mode development --allowed-hosts ${STOLOS_PUBLIC_URL}
+    image: neorion-dashboard:${STOLOS_PUBLIC_URL}
+    ports:
+      - 3000
+    networks:
+      - intelligems-central
+    volumes:
+      - ${STOLOS_REMOTE_DIR}/public:/usr/src/app/public/
+      - ${STOLOS_REMOTE_DIR}/src:/usr/src/app/src/
+    environment:
+      - NODE_ENV=development
+      - CHOKIDAR_USEPOLLING=true
+
+

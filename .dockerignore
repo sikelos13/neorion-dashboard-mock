@@ -1,0 +1,17 @@
+.git
+.stolos
+tmp
+build/
+.idea
+
+node_modules
+coverage
+
+docker-compose.yml
+.drone.yml
+.stolos.yml
+README.MD
+ecs/
+deployment-scripts/
+
+

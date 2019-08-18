@@ -1,0 +1,15 @@
+version: '3.4'
+
+services:
+  web:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+      target: production
+      # args:
+      #   API_HOST: https://neorion.koslib.dev.intelligems.eu
+      #   API_NAMESPACE: api/v1
+    image: neorion-dashboard:prod
+    ports:
+      - 80:80
+

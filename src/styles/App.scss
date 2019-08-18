@@ -1,0 +1,41 @@
+
+.img-logo {
+  max-width: 100%;
+  max-height: 100%;
+}
+.content {
+    margin: 0 auto;
+    width: 100%;
+}
+
+.bg-custom {
+  background-color: lightgrey !important;
+}
+
+nav {
+  background: #2a3f54 !important;
+}
+
+.nav_title {
+  background-color: #2a3f54;
+}
+
+.custom-link {
+  padding: 25px 170px 25px 0;
+}
+
+//Bootstrap Sidebar and navbar
+
+.login-page {
+  display: flex;
+  width: 100%;
+  min-height: 100vh;
+  align-items: center;
+  justify-content: center;
+}
+
+.logout-button {
+  a[aria-expanded="true"]{
+    background-color: transparent !important;
+  }
+}
