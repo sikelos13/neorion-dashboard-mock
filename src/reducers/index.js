@@ -3,10 +3,12 @@ import { connectRouter } from 'connected-react-router'
 import auth, * as fromAuth from './auth.js'
 import usersReducer from './user.js'
 import projects from './projects.js'
+import tickets from './tickets'
 
 export default (history) => combineReducers({
     auth: auth,
     user: usersReducer,
+    tickets: tickets,
     projects: projects,
     router: connectRouter(history),
   // rest of your reducers

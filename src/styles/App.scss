@@ -4,8 +4,8 @@
   max-height: 100%;
 }
 .content {
-    margin: 0 auto;
-    width: 100%;
+  margin: 0 auto;
+  width: 100%;
 }
 
 .bg-custom {
@@ -38,4 +38,9 @@ nav {
   a[aria-expanded="true"]{
     background-color: transparent !important;
   }
+}
+
+.breadcrumb {
+  background-color: whitesmoke !important;
+  border-radius: 0 !important;
 }
