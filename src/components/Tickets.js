@@ -104,7 +104,6 @@ class Tickets extends Component {
                                 }}
                                 className="-striped -highlight" />
                 </div>
-
             </div>
         )
     }
