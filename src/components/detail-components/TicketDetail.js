@@ -12,40 +12,64 @@ class Tickets extends Component {
     constructor(props) {
         super(props);
         this.state=({
-            ticket: {}
+            author: "",
+            description: "",
+            status: "",
+            project: "",
+            priority: ""
         });
     }
+
+    onChange(e) {
+        this.setState({[e.target.name]: e.target.value})
+    }
+    // handleChangeAuthor(event) {
+    //     this.setState({valueAuthor: event.target.valueAuthor});
+    // }
+    // handleChangeDescription(event) {
+    //     this.setState({valueDescription: event.target.valueDescription});
+    // }
+    // handleChangeStatus(event) {
+    //     console.log(event)
+    //     this.setState({valueStatus: event.target.valueStatus});
+    // }
     componentDidMount() {
         // const {foo} = this.props.location.state;
         // console.log(this.props.location.state.ticket);
         // const ticket = this.props.location.state.ticket;
         // console.log(ticket);
-        this,this.setState({ticket: this.props.location.state.ticket })
+        this,this.setState({
+            status: this.props.location.state.ticket.status,
+            description: this.props.location.state.ticket.description,
+            author: this.props.location.state.ticket.author,
+            project: this.props.location.state.ticket.project,
+            priority: this.props.location.state.ticket.priority,
+        })
     }
 
 
     render() {
-        const pageTitle = `Ticket ${this.state.ticket.project}`;
+        const pageTitle = `Ticket ${this.state.project}`;
         return (
             <div className="container custom-margin">
                 <PageTitle title={pageTitle}/>
 
             <Form>
                 <FormGroup>
-                    <Label for="exampleSelect">Tickets</Label>
-                    <Input type="select" name="select" id="exampleSelect">
-                        <option>Ticket 1</option>
-                        <option>Ticket 2</option>
-                        <option>Ticket 3</option>
-                    </Input>
+                    <Label for="exampleSelect">Priority</Label>
+                    <Input type="text" value={this.state.priority}  onChange={(value) => this.onChange(value)} id="exampleSelect" />
+                    </FormGroup>
+                <FormGroup>
+                    <Label for="exampleSelect">Status</Label>
+                    <Input type="text" value={this.state.status}  onChange={(value) => this.onChange(value)}  id="exampleSelect" />
                 </FormGroup>
                 <FormGroup>
                     <Label for="exampleSelect">Author</Label>
-                    <Input type="text" placeholder={this.state.ticket.author} id="exampleSelect" />
+                    <Input type="text" value={this.state.author} onChange={(value) => this.onChange(value)} id="exampleSelect" />
                 </FormGroup>
                 <FormGroup>
                     <Label for="exampleText">Description Text</Label>
-                    <Input type="textarea" name="text" value={this.state.ticket.description} />
+                    <Input value={this.state.description} onChange={(value) => this.onChange(value)} id="exampleSelect" />
                 </FormGroup>
                 <Button>Submit</Button>
                 <Button href='/tickets'>Back</Button>
