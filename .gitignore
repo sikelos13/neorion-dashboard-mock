@@ -28,3 +28,4 @@ yarn-error.log*
 # Stolos Related
 .stolos
 .unison.*
+/node_modules/
