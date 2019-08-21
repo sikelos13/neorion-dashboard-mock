@@ -8,13 +8,24 @@ import PageTitle from "../PageTitle";
 import {bindActionCreators} from 'redux'
 
 class Tickets extends Component {
+
     constructor(props) {
         super(props);
-        this.state={tickets: [], projects: [], ticket: {}};
+        this.state=({
+            ticket: {}
+        });
+    }
+    componentDidMount() {
+        // const {foo} = this.props.location.state;
+        // console.log(this.props.location.state.ticket);
+        // const ticket = this.props.location.state.ticket;
+        // console.log(ticket);
+        this,this.setState({ticket: this.props.location.state.ticket })
     }
 
+
     render() {
-        const pageTitle = 'Ticket-Detail';
+        const pageTitle = `Ticket ${this.state.ticket.project}`;
         return (
             <div className="container custom-margin">
                 <PageTitle title={pageTitle}/>
@@ -30,15 +41,11 @@ class Tickets extends Component {
                 </FormGroup>
                 <FormGroup>
                     <Label for="exampleSelect">Author</Label>
-                    <Input type="select" name="select" id="exampleSelect">
-                        <option>Author 1</option>
-                        <option>Author 2</option>
-                        <option>Author 3</option>
-                    </Input>
+                    <Input type="text" placeholder={this.state.ticket.author} id="exampleSelect" />
                 </FormGroup>
                 <FormGroup>
-                    <Label for="exampleText">Comment Text</Label>
-                    <Input type="textarea" name="text" />
+                    <Label for="exampleText">Description Text</Label>
+                    <Input type="textarea" name="text" value={this.state.ticket.description} />
                 </FormGroup>
                 <Button>Submit</Button>
                 <Button href='/tickets'>Back</Button>
@@ -50,7 +57,7 @@ class Tickets extends Component {
 
 const mapStateToProps = state => {
     return {
-        // ticketsArray: state.tickets.tickets,
+        // ticket: this.props.location.state.ticket,
         // projectsArray: state.projects.projects
         // projectsArray: _.find(state, 'id', ownProps.params.id)
     };

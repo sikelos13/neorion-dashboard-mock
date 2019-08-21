@@ -21,9 +21,10 @@ export const fetchTickets = () => ({
 });
 
 export const onRowClick = (ticketId) => ({
-    meta: {
-        transition: {
-            path: `/ticket-detail/${ticketId}`
-        }
-    }
+    // meta: {
+    //     transition: {
+    //         path: `/ticket/${ticketId}/edit`
+    //     }
+    // }
+
 });

@@ -41,8 +41,7 @@ class Tickets extends Component {
                                             {
                                                 Header: "Name",
                                                 id: "prjectName",
-                                                accessor: d => d.project,
-                                                // onClick: d => <PrivateRoute path=`tickets/:id/edit" component={TicketDetail} />
+                                                accessor: d => (<Link to={`/ticket/${d.id}/edit`} state={{ticket: d}}>{d.project}</Link>)
                                             }
                                         ]
                                     },
@@ -82,14 +81,17 @@ class Tickets extends Component {
                                     if (rowInfo && rowInfo.row) {
                                         return {
                                             onClick: (e) => {
+
+
+                                                // handleClick(rowInfo);
                                                 this.setState({
                                                     selected: rowInfo.index
                                                 });
 
-                                                this.props.history.push({
-                                                    pathname: `/tickets/${rowInfo.original.id}/edit`,
-                                                    state: { tickets: this.props.ticketsArray }
-                                                });
+                                                // this.props.history.push({
+                                                //     pathname: `/ticket/${rowInfo.original.id}/edit`,
+                                                //     state: { tickets: this.props.ticketsArray }
+                                                // });
                                                 // console.log(this.props.ticketsArray);
                                             },
                                             style: {

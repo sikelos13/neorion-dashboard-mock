@@ -92,7 +92,7 @@ class App extends Component {
             <PrivateRoute path="/tickets" component={Tickets} />
             <PrivateRoute path="/users" component={Users} />
             <PrivateRoute exact path="/new-ticket" component={TicketDetail} />
-            <PrivateRoute exact path="/tickets/:id/edit" component={TicketDetail} />
+            <PrivateRoute exact path="/ticket/:id/edit" component={TicketDetail} />
 
           </Router>
         </div>
