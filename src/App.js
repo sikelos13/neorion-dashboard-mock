@@ -25,6 +25,7 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import { fetchUsers } from './actionCreators/user';
 import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 import TicketDetail from "./components/detail-components/TicketDetail";
+import NewTicket from "./components/new-record-components/NewTicket";
 
 library.add(faIgloo, faHome, faTicketAlt, faUser, faProjectDiagram,faBars);
 
@@ -91,7 +92,7 @@ class App extends Component {
             <PrivateRoute path="/projects" component={Projects} />
             <PrivateRoute path="/tickets" component={Tickets} />
             <PrivateRoute path="/users" component={Users} />
-            <PrivateRoute exact path="/new-ticket" component={TicketDetail} />
+            <PrivateRoute exact path="/new-ticket" component={NewTicket} />
             <PrivateRoute exact path="/ticket/:id/edit" component={TicketDetail} />
 
           </Router>

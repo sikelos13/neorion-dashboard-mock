@@ -6,7 +6,6 @@ import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 // import {projectsArray} from "../reducers/projects";
 import PageTitle from "../PageTitle";
 import {bindActionCreators} from 'redux'
-import {Redirect} from "@reach/router";
 
 class Tickets extends Component {
 
@@ -18,8 +17,7 @@ class Tickets extends Component {
             status: "",
             project: "",
             priority: "",
-            comments: [],
-            isSubmited: false
+            comments: []
         });
         this.handleSubmit = this.handleSubmit.bind(this);
 
@@ -48,15 +46,13 @@ class Tickets extends Component {
         console.log(data);
 
         const localToken = localStorage.getItem('token');
-        fetch(`${process.env.DB_HOST}/tickets/${this.props.location.state.ticket.id}/`, {
-            method: 'PATCH',
+        fetch(`${process.env.DB_HOST}/tickets/`, {
+            method: 'POST',
             headers: new Headers({
                 'Authorization': 'Token '+ localToken,
                 'Content-Type': 'application/json'
             }),
             body: JSON.stringify(data),
-        }).then(() => {
-            this.setState({isSubmited: true})
         });
     }
 
@@ -89,37 +85,34 @@ class Tickets extends Component {
 
     render() {
         const pageTitle = `Ticket ${this.state.project}`;
-        if (this.state.isSubmited) {
-            return <Redirect to='/tickets' />;
-        }
         return (
             <div className="container custom-margin">
                 <PageTitle title={pageTitle}/>
 
-            <Form onSubmit={this.handleSubmit}>
-                <FormGroup>
-                    <Label for="exampleSelect">Project</Label>
-                    <Input type="text" value={this.state.project}  onChange={this.onChangeProject} id="exampleSelect" />
-                </FormGroup>
-                <FormGroup>
-                    <Label for="exampleSelect">Priority</Label>
-                    <Input type="text" value={this.state.priority}  onChange={this.onChangePriority} id="exampleSelect" />
+                <Form onSubmit={this.handleSubmit}>
+                    <FormGroup>
+                        <Label for="exampleSelect">Project</Label>
+                        <Input type="text" value={this.state.project}  onChange={this.onChangeProject} id="exampleSelect" />
                     </FormGroup>
-                <FormGroup>
-                    <Label for="exampleSelect">Status</Label>
-                    <Input type="text" value={this.state.status} onChange={this.onChangeStatus} id="exampleSelect" />
-                </FormGroup>
-                <FormGroup>
-                    <Label for="exampleSelect">Author</Label>
-                    <Input type="text" value={this.state.author} onChange={this.onChangeAuthor} id="exampleSelect" />
-                </FormGroup>
-                <FormGroup>
-                    <Label for="exampleText">Description Text</Label>
-                    <Input value={this.state.description} onChange={this.onChangDescription} id="exampleSelect" />
-                </FormGroup>
-                <Button onClick={this.saveTicket}>Submit</Button>
-                <Button href='/tickets'>Back</Button>
-            </Form>
+                    <FormGroup>
+                        <Label for="exampleSelect">Priority</Label>
+                        <Input type="text" value={this.state.priority}  onChange={this.onChangePriority} id="exampleSelect" />
+                    </FormGroup>
+                    <FormGroup>
+                        <Label for="exampleSelect">Status</Label>
+                        <Input type="text" value={this.state.status} onChange={this.onChangeStatus} id="exampleSelect" />
+                    </FormGroup>
+                    <FormGroup>
+                        <Label for="exampleSelect">Author</Label>
+                        <Input type="text" value={this.state.author} onChange={this.onChangeAuthor} id="exampleSelect" />
+                    </FormGroup>
+                    <FormGroup>
+                        <Label for="exampleText">Description Text</Label>
+                        <Input value={this.state.description} onChange={this.onChangDescription} id="exampleSelect" />
+                    </FormGroup>
+                    <Button onClick={this.saveTicket}>Submit</Button>
+                    <Button href='/tickets'>Back</Button>
+                </Form>
             </div>
         );
     }

@@ -19,6 +19,19 @@ export const fetchTickets = () => ({
         ]
     }
 });
+export const saveTicket = (data) => ({
+    [RSAA]: {
+        endpoint: `${process.env.DB_HOST}/tickets/`,
+        method: 'POST',
+        body: data,
+        headers: { 'Content-Type': 'application/json'},
+        types: [
+            TICKET_REQUEST,
+            TICKET_SUCCESS,
+            TICKET_FAILURE
+        ]
+    }
+});
 
 export const onRowClick = (ticketId) => ({
     // meta: {
