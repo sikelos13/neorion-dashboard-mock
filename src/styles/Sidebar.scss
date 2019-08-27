@@ -9,6 +9,13 @@
   cursor: pointer;
 }
 
+.logout-button, .logout-item {
+  cursor: pointer;
+  &:hover {
+    cursor: pointer;
+  }
+}
+
 #sidebar {
   min-width: 250px;
   max-width: 250px;
