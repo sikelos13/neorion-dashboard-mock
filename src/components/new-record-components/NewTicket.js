@@ -44,7 +44,6 @@ class Tickets extends Component {
         const data = this.state;
         const data1 = (data);
         console.log(data);
-
         const localToken = localStorage.getItem('token');
         fetch(`${process.env.DB_HOST}/tickets/`, {
             method: 'POST',
